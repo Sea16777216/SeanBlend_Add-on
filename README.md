@@ -22,8 +22,5 @@ How to use:
 
 If you like it, give us some credit!
 You can also contrubite to help SeanBlend!
-<<<<<<< HEAD
 
 *I recommend right-clicking on Prefrences and left-clicking "Assign Shortcut" (or whatever it is), and press ctrl + alt + u.
-=======
->>>>>>> 46aaa1e5a362ef37cfa5d3bd9139a685a0372755
