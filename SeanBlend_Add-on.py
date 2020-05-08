@@ -140,7 +140,7 @@ class Panel:            # This panel is the main panel. It's what you find when 
     bl_category = "SeanBlend"     # Name of the panel
     bl_options = {"DEFAULT_CLOSED"} # Note: IMPORTANT: DO NOT PUT THIS CLASS IN classes. YOU WILL READ MORE LATER.
 
-class SEANBLEND_PT_HI(Panel, bpy.types.Panel):
+class SEANBLEND_PT_Panel(Panel, bpy.types.Panel):
     ''' This is a Panel like the Add-on Settings in PatBlend. Every panel name must start with SEANBLEND_PT_
     The name after that is the name. And, you need (Panel, bpy.types.Panel) after that.
     The elements of a panel are:
@@ -151,21 +151,20 @@ class SEANBLEND_PT_HI(Panel, bpy.types.Panel):
     Note: This panel mainly focuses on how to put those things in. The next panel focuses more on style. (HTML and CSS).
     '''
     bl_idname = "SEANBLEND_PT_Panel"
-    bl_label = "Panel 1"
+    bl_label = "Hi."
 
     def draw(self, context):   # This is where you do HTML and CSS. There must be (self, context) after def draw.
         layout = self.layout   # This and the next line are inits NEEDED for every panel.
         prop = context.scene.seanblend
 
-        layout.prop(prop, "myBull")     # layout.prop adds a property. Remember: Properties were defined at the beginning, but I mentioned
-        layout.prop(prop, "myString")       # that the beginning doesn't define the order. Here, you can define the order. Right now, I am putting 
-        layout.prop(prop, "myFloat")      # Float, Int, and Enum. That is not the same order as the beginning, but it still works. To add a prop, put
+        layout.prop(prop, "myFloat")     # layout.prop adds a property. Remember: Properties were defined at the beginning, but I mentioned
+        layout.prop(prop, "myEnum")       # that the beginning doesn't define the order. Here, you can define the order. Right now, I am putting      # Float, Int, and Enum. That is not the same order as the beginning, but it still works. To add a prop, put
                                          # layout.prop( and then put the word "prop", then comma, then the EXACT name of the property.
 
-class SEANBLEND_PT_BYE(Panel, bpy.types.Panel):
+class SEANBLEND_PT_Panel1(Panel, bpy.types.Panel):
     # In this panel, I will be focusing on styling and making things look cool.
     bl_idname = "SEAMBLEND_PT_Panel2"
-    bl_label = "Panel 2"
+    bl_label = "Bye."
 
     def draw(self, context):
         layout = self.layout
