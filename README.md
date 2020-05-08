@@ -19,3 +19,5 @@ How to Install
 How to use:
     1. Press "n" to go to the sidebar
     2. On the right side, click SeanBlend
+
+!
