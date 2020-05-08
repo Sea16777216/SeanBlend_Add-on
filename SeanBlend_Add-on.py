@@ -18,14 +18,14 @@ Those are important.
 
 bl_info = {
     "name":          "SeanBlend",             # Write add-on name between quotations.
-    "description":   "",             # Write description between quotations.
+    "description":   "All add-ons made by SeanBlend",             # Write description between quotations.
     "author":        "Sean Huang, Patrick Huang",
     "version":       (1, 0, 0),       # ex: (4, 2, 6) means 4.2.6
     "blender":       (2, 80, 0),      # Keep this as is.
     "location":      "3D View >> Sidebar >> SeanBlend",      # Keep as is
     "warning":       "",              # Only write if needed.
-    "wiki_url":      "",              # GitHub website
-    "tracker_url":    "",             # Website to report a bug
+    "wiki_url":      "https://github.com/Sea16777216/SeanBlend_Add-on",              # GitHub website
+    "tracker_url":    "https://github.com/Sea16777216/SeanBlend_Add-on",             # Website to report a bug
     "category":      "SeanBlend"}    # Change if you want
 
 import bpy, math, time
@@ -88,7 +88,7 @@ class SeanBlendProperties(PropertyGroup):
     )
 
     myBull: BoolProperty(            # A Bool, or Boolean, is a True or False. If you are setting the default with True, the T must be capitalized. Same for False.
-        name = "True?",
+        name = "Hi.",
         description = "Yes or no",
         default = True
     )
@@ -97,9 +97,9 @@ class SeanBlendProperties(PropertyGroup):
         name = "Which one?",          # Each member of the item property is a tuple with three items. A tuple is this: (1, 2, 3)
         description = "Pick",         # All three items of the tuple are strings. The first one is a number, like '0'.
         items = [                    # The second one is the name of the option, like Cycles or Eevee.
-            ('0', "Sean", "A round object"),  # The third one is the description of the item, like Blender's raytraced engine.
-            ('1', "Patrick", "An intellegent object"),
-            ('2', "Mom", "A loudmouth")
+            ('0', "Cycles", "The Best Render Engine"),  # The third one is the description of the item, like Blender's raytraced engine.
+            ('1', "Eevee", "The Realtime Render Engine"),
+            ('2', "Workbench", "A Render Engine That Looks Like Solid View")
         ]
     )
 
@@ -116,22 +116,21 @@ class SEANBLEND_OT_Button(Operator):
     bl_idname: Unique identifier for the button. Must start with wm.seanblend_ Every idname must be different.
     def execute: What happens when the button is pressed.
     '''
-    bl_label = "Press for fat"   # User will see "Press for fat" on the button.
-    bl_idname = "wm.seanblend_is_fat"   # Identifier
+    bl_label = "Press to print Hi."   # User will see "Press for fat" on the button.
+    bl_idname = "wm.seanblend_hi"   # Identifier
     
     def execute(self, context):        # This is what happens when the button is pressed.
         prop = context.scene.seanblend    # Sets up variables. Needed for every button.
-        print("Yo Fatty!")             # This line and the next just print words
-        print("Your fat float number is:")
-        print(prop.myFloat)         # This line prints whatever the myFloat value is set to above. If you want to print the string, put prop.myString.
+        print("Hi.")             # This line and the next just print words       # This line prints whatever the myFloat value is set to above. If you want to print the string, put prop.myString.
 
         return {'FINISHED'}       # Needed at the end of every def execute. Tells Blender finished successfully.
 
 class SEANBLEND_OT_Button2(Operator):
-    bl_label = "Second butt(on)"
-    bl_idname = "wm.seanblend_button_too"
+    bl_label = "Press to print Bye."
+    bl_idname = "wm.seanblend_bye"
 
-    def execute(self, context):          # This button doesn't do anything...yet. Customize it to do whatever you want.
+    def execute(self, context):
+        print("Bye.")          # This button doesn't do anything...yet. Customize it to do whatever you want.
         return {'FINISHED'}
 
 #### Panel time: The "HTML and CSS of Blender".
@@ -141,7 +140,7 @@ class Panel:            # This panel is the main panel. It's what you find when 
     bl_category = "SeanBlend"     # Name of the panel
     bl_options = {"DEFAULT_CLOSED"} # Note: IMPORTANT: DO NOT PUT THIS CLASS IN classes. YOU WILL READ MORE LATER.
 
-class SEANBLEND_PT_Panel1(Panel, bpy.types.Panel):
+class SEANBLEND_PT_HI(Panel, bpy.types.Panel):
     ''' This is a Panel like the Add-on Settings in PatBlend. Every panel name must start with SEANBLEND_PT_
     The name after that is the name. And, you need (Panel, bpy.types.Panel) after that.
     The elements of a panel are:
@@ -158,12 +157,12 @@ class SEANBLEND_PT_Panel1(Panel, bpy.types.Panel):
         layout = self.layout   # This and the next line are inits NEEDED for every panel.
         prop = context.scene.seanblend
 
-        layout.prop(prop, "myFloat")     # layout.prop adds a property. Remember: Properties were defined at the beginning, but I mentioned
-        layout.prop(prop, "myInt")       # that the beginning doesn't define the order. Here, you can define the order. Right now, I am putting 
-        layout.prop(prop, "myEnum")      # Float, Int, and Enum. That is not the same order as the beginning, but it still works. To add a prop, put
+        layout.prop(prop, "myBull")     # layout.prop adds a property. Remember: Properties were defined at the beginning, but I mentioned
+        layout.prop(prop, "myString")       # that the beginning doesn't define the order. Here, you can define the order. Right now, I am putting 
+        layout.prop(prop, "myFloat")      # Float, Int, and Enum. That is not the same order as the beginning, but it still works. To add a prop, put
                                          # layout.prop( and then put the word "prop", then comma, then the EXACT name of the property.
 
-class SEANBLEND_PT_Panel2(Panel, bpy.types.Panel):
+class SEANBLEND_PT_BYE(Panel, bpy.types.Panel):
     # In this panel, I will be focusing on styling and making things look cool.
     bl_idname = "SEAMBLEND_PT_Panel2"
     bl_label = "Panel 2"
@@ -178,8 +177,8 @@ class SEANBLEND_PT_Panel2(Panel, bpy.types.Panel):
         row.prop(prop, "myBull")    
 
         row = layout.row()   # Moving on to the next row
-        row.scale_y = 7      # The vertical scale is 7 times
-        row.operator("wm.seanblend_is_fat")       # I put a button. The things in the parenthisis is the bl_idname of the button.
+        row.scale_y = 2      # The vertical scale is 7 times
+        row.operator("wm.seanblend_Hi.")       # I put a button. The things in the parenthisis is the bl_idname of the button.
 
 classes = (SeanBlendProperties,      # Here, wherever in the script you see the word class, type the word in front of it.
            SEANBLEND_OT_Button,      # The only exception is class Panel, as mentioned above.
