@@ -10,7 +10,7 @@ Where to Find: Sidebar ("n").
 
 How to Install
     1. Open Blender
-    2. Open Prefrences* (Edit > Prefrences)
+    2. Open *Prefrences (Edit > Prefrences)
     3. Open the Add-on Secion (On the left side)
     4. Click Install (Top right corner)
     5. Find SeanBlend_Add-on and click on it

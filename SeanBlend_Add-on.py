@@ -183,8 +183,8 @@ class SEANBLEND_PT_BYE(Panel, bpy.types.Panel):
 classes = (SeanBlendProperties,      # Here, wherever in the script you see the word class, type the word in front of it.
            SEANBLEND_OT_Button,      # The only exception is class Panel, as mentioned above.
            SEANBLEND_OT_Button2,
-           SEANBLEND_PT_Panel1,
-           SEANBLEND_PT_Panel2)
+           SEANBLEND_PT_HI,
+           SEANBLEND_PT_BYE)
 
 def register():                     # Leave as is
     from bpy.utils import register_class
