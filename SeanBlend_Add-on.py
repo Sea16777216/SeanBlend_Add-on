@@ -178,7 +178,7 @@ class SEANBLEND_PT_BYE(Panel, bpy.types.Panel):
 
         row = layout.row()   # Moving on to the next row
         row.scale_y = 2      # The vertical scale is 7 times
-        row.operator("wm.seanblend_Hi.")       # I put a button. The things in the parenthisis is the bl_idname of the button.
+        row.operator("wm.seanblend_Bye.")       # I put a button. The things in the parenthisis is the bl_idname of the button.
 
 classes = (SeanBlendProperties,      # Here, wherever in the script you see the word class, type the word in front of it.
            SEANBLEND_OT_Button,      # The only exception is class Panel, as mentioned above.
