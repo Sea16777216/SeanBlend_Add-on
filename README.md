@@ -6,7 +6,7 @@ Copyright © SeanBlend Add-ons
 Author: Sean Huang, Patrick Huang
 Blender Version: 2.8x
 Add-on Version: 1.0.0
-
+Where to Find: Sidebar ("n")
 
 How to Install
     1. Open Blender
