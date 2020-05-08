@@ -20,4 +20,5 @@ How to use:
     1. Press "n" to go to the sidebar
     2. On the right side, click SeanBlend
 
-!
+If you like it, give us some credit!
+You can also contrubite to help SeanBlend!
