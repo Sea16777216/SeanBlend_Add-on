@@ -94,7 +94,7 @@ class SEANBLEND_PT_OtherSettings(Panel, bpy.types.Panel):
         scene = context.scene
         prop = scene.seanblend
 
-        layout.operator("seanblend.displaysize")
+        layout.operator(prop, "DisplaySize")
 
 classess = (SeanBlendProperties,                # Extra s in classess to keep letter count multiple of 4
             SEANBLEND_OT_Disable,
