@@ -29,11 +29,11 @@ class SeanBlendProperties(PropertyGroup):
     prop: BoolProperty(
         name = "Prop"
     )
-    displaySize: EnumProperty(
+    DisplaySize: EnumProperty(
         name = "Display Size (this doesn't do anything yet)",
         description = "Choosing your display size",
         items = [
-            ('0', "Large", "Very big"),
+            ('0', "Large", "Very big, don't recommend"),
             ('1', "Normal", "Normal size"),
             ('2', "Small", "Very compressed, saves space")
         ]
@@ -94,7 +94,7 @@ class SEANBLEND_PT_OtherSettings(Panel, bpy.types.Panel):
         scene = context.scene
         prop = scene.seanblend
 
-        layout.operator(prop, "displaySize")
+        layout.prop(prop, "DisplaySize")
 
 classess = (SeanBlendProperties,                # Extra s in classess to keep letter count multiple of 4
             SEANBLEND_OT_Disable,
