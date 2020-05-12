@@ -36,6 +36,8 @@ class SeanBlendProperties(PropertyGroup):
             ('0', "Large", "Very big"),
             ('1', "Normal", "Normal size"),
             ('2', "Small", "Very compressed, saves space")
+        ]
+    )
 
 class SEANBLEND_OT_Disable(Operator):
     bl_label = "Disable"
@@ -91,6 +93,8 @@ class SEANBLEND_PT_OtherSettings(Panel, bpy.types.Panel):
         layout = self.layout
         scene = context.scene
         prop = scene.seanblend
+
+        layout.operator("seanblend.displaysize")
 
 classess = (SeanBlendProperties,                # Extra s in classess to keep letter count multiple of 4
             SEANBLEND_OT_Disable,
