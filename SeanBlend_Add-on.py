@@ -76,15 +76,6 @@ class SEANBLEND_PT_QuickSettings(Panel, bpy.types.Panel):
         layout.operator("seanblend.disable")
         layout.operator("seanblend.remove")
 
-class SEANBLEND_PT_OtherSettings(Panel, bpy.types.Panel):
-    bl_label = "Other Settings"
-    bl_parent_id = "SEANBLEND_PT_Settings"
-
-    def draw(self, context):
-        layout = self.layout
-        scene = context.scene
-        prop = scene.seanblend
-
 class SEANBLEND_PT_TextSaver(Panel, bpy.types.Panel):
     bl_label = "Text Saver"
     bl_idname = "SEANBLEND_PT_TextSaver"
