@@ -2,7 +2,7 @@ bl_info = {
     "name":          "SeanBlend",
     "description":   "All add-ons made by SeanBlend",
     "author":        "Sean Huang, Patrick Huang",
-    "version":       (1, 0, 0),
+    "version":       (1, 0, 1),
     "blender":       (2, 80, 0),
     "location":      "3D View >> Sidebar >> SeanBlend",
     "warning":       "",
@@ -30,12 +30,12 @@ class SeanBlendProperties(PropertyGroup):
         name = "Prop"
     )
     DisplaySize: EnumProperty(
-        name = "Display Size",
+        name = "Display Size (this doesn't do anything yet)",
         description = "Choosing your display size",
         items = [
             ('0', "Large", "Very big"),
             ('1', "Normal", "Normal size"),
-            ('2', "Small", "Very compressed; saves space")
+            ('2', "Small", "Very compressed, saves space")
 
 class SEANBLEND_OT_Disable(Operator):
     bl_label = "Disable"
