@@ -84,6 +84,7 @@ class SEANBLEND_PT_QuickSettings(Panel, bpy.types.Panel):
 
         layout.operator("seanblend.disable")
         layout.operator("seanblend.remove")
+        layout.prop(prop, "DisplaySize")
 
 class SEANBLEND_PT_OtherSettings(Panel, bpy.types.Panel):
     bl_label = "Other Settings"
@@ -93,8 +94,6 @@ class SEANBLEND_PT_OtherSettings(Panel, bpy.types.Panel):
         layout = self.layout
         scene = context.scene
         prop = scene.seanblend
-
-        layout.prop(prop, "DisplaySize")
 
 classess = (SeanBlendProperties,                # Extra s in classess to keep letter count multiple of 4
             SEANBLEND_OT_Disable,
