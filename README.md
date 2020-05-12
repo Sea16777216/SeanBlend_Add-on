@@ -23,4 +23,4 @@ How to use:
 If you like it, give us some credit!
 You can also contrubite to help SeanBlend!
 
-*I recommend right-clicking on Prefrences and left-clicking "Assign Shortcut", and press ctrl + alt + u.
+*I recommend right-clicking on Prefrences and left-clicking "Assign Shortcut", and press ctrl + alt + u, but you will have to remember the shortcut!
