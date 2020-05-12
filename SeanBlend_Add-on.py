@@ -29,15 +29,6 @@ class SeanBlendProperties(PropertyGroup):
     prop: BoolProperty(
         name = "Prop"
     )
-    DisplaySize: EnumProperty(
-        name = "Display Size (this doesn't do anything yet)",
-        description = "Choosing your display size",
-        items = [
-            ('0', "Large", "Very big, don't recommend"),
-            ('1', "Normal", "Normal size"),
-            ('2', "Small", "Very compressed, saves space")
-        ]
-    )
 
 class SEANBLEND_OT_Disable(Operator):
     bl_label = "Disable"
@@ -84,7 +75,6 @@ class SEANBLEND_PT_QuickSettings(Panel, bpy.types.Panel):
 
         layout.operator("seanblend.disable")
         layout.operator("seanblend.remove")
-        layout.prop(prop, "DisplaySize")
 
 class SEANBLEND_PT_OtherSettings(Panel, bpy.types.Panel):
     bl_label = "Other Settings"
