@@ -27,7 +27,8 @@ from bpy.types import (Panel,
 
 class SeanBlendProperties(PropertyGroup):
     Text: StringProperty(
-        name = "Text"
+        name = "Text",
+        description = "Type in the text you wish to be saved in a scripting file"
     )
 
 class SEANBLEND_OT_Disable(Operator):
@@ -47,7 +48,6 @@ class SEANBLEND_OT_Remove(Operator):
     def execute(self, context):
         bpy.ops.preferences.addon_remove(module = "SeanBlend_Add-on")
         return {'FINISHED'}
-
 
 class Panel():
     bl_space_type = "VIEW_3D"
@@ -85,12 +85,13 @@ class SEANBLEND_PT_TextSaver(Panel, bpy.types.Panel):
         scene = context.scene
         prop = scene.seanblend
 
+        row = layout.row()
+
 classess = (SeanBlendProperties,                # Extra s in classess to keep letter count multiple of 4
             SEANBLEND_OT_Disable,
             SEANBLEND_OT_Remove,
             SEANBLEND_PT_Settings,
-            SEANBLEND_PT_QuickSettings,
-            SEANBLEND_PT_OtherSettings)
+            SEANBLEND_PT_QuickSettings)
 
 
 def register():
