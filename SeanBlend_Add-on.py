@@ -143,6 +143,33 @@ class SEANBLEND_OT_CCircle(Operator):
         bpy.ops.curve.primitive_bezier_circle_add()
         return {'FINISHED'}
 
+class SEANBLEND_OT_Nurbs(Operator):
+    bl_label = "Add Nurbs"
+    bl_description = "Adds a Nurbs"
+    bl_idname = "seanblend.nurbs"
+
+    def execute(self, context):
+        bpy.ops.curve.primitive_nurbs_curve_add()
+        return {'FINISHED'}
+
+class SEANBLEND_OT_NurbsCircle(Operator):
+    bl_label = "Add Nurbs Circle"
+    bl_description = "Adds a Nurbs Circle"
+    bl_idname = "seanblend.nurbscircle"
+
+    def execute(self, context):
+        bpy.ops.curve.primitive_nurbs_circle_add()
+        return {'FINISHED'}
+
+class SEANBLEND_OT_Path(Operator):
+    bl_label = "Add Path"
+    bl_description = "Adds a Path"
+    bl_idname = "seanblend.path"
+
+    def execute(self, context):
+        bpy.ops.curve_primitive_nurbs_path_add()
+        return {'FINISHED'}
+
 #Settings
 
 class SEANBLEND_OT_Disable(Operator):
@@ -221,6 +248,9 @@ class SEANBLEND_PT_Curve(Panel, bpy.types.Panel):
 
         layout.operator("seanblend.bezier")
         layout.operator("seanblend.ccircle")
+        layout.operator("seanblend.nurbs")
+        layout.operator("seanblend.nurbscircle")
+        layout.operator("seanblend.path")
 
 #Settings
 
@@ -263,7 +293,10 @@ classess = (#Panels#
             SEANBLEND_OT_MonkeySuzzane,
             #Object Adder >> Curve
             SEANBLEND_OT_Bezier,
-            SEANBLEND_OT_CCircle,)
+            SEANBLEND_OT_CCircle,
+            SEANBLEND_OT_Nurbs,
+            SEANBLEND_OT_NurbsCircle,
+            SEANBLEND_OT_Path,)
 
 def register():
     from bpy.utils import register_class
