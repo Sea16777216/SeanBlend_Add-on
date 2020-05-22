@@ -2,7 +2,7 @@ bl_info = {
     "name":          "SeanBlend",
     "description":   "All add-ons made by SeanBlend",
     "author":        "Sean Huang, Patrick Huang",
-    "version":       (1, 0, 1),
+    "version":       (1, 0, 2),
     "blender":       (2, 80, 0),
     "location":      "3D View >> Sidebar >> SeanBlend",
     "warning":       "",
@@ -26,10 +26,37 @@ from bpy.types import (Panel,
 
 
 class SeanBlendProperties(PropertyGroup):
-    Text: StringProperty(
-        name = "Text",
-        description = "Type in the text you wish to be saved in a scripting file"
+    hi: BoolProperty(
+        name = "hi",
+        description = "hi"
     )
+
+class Panel():
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_category = "SeanBlend"
+    bl_options = {'DEFAULT_CLOSED'}
+
+class SEANBLEND_PT_Mesh(Panel, bpy.types.Panel):
+    bl_label = "Mesh"
+    bl_parent_id = "SEANBLEND_PT_ObjectAdder"
+
+    def draw(self, context):
+        layout = self.layout
+        scene = context.scene
+        prop = scene.seanblend
+
+        layout.operator("seanblend.plane")
+
+class SEANBLEND_OT_Plane(Operator):
+    bl_label = "Add Plane"
+    bl_description = "Adds a plane"
+    bl_idname = "seanblend.plane"
+
+    def execute(self, context):
+        bpy.ops.mesh.primitive_plane_add()
+        return {'FINISHED'}
+        
 
 class SEANBLEND_OT_Disable(Operator):
     bl_label = "Disable"
@@ -49,11 +76,6 @@ class SEANBLEND_OT_Remove(Operator):
         bpy.ops.preferences.addon_remove(module = "SeanBlend_Add-on")
         return {'FINISHED'}
 
-class Panel():
-    bl_space_type = "VIEW_3D"
-    bl_region_type = "UI"
-    bl_category = "SeanBlend"
-    bl_options = {'DEFAULT_CLOSED'}
 
 class SEANBLEND_PT_Settings(Panel, bpy.types.Panel):
     bl_label = "Settings"
@@ -64,35 +86,25 @@ class SEANBLEND_PT_Settings(Panel, bpy.types.Panel):
         scene = context.scene
         prop = scene.seanblend
 
-class SEANBLEND_PT_QuickSettings(Panel, bpy.types.Panel):
-    bl_label = "Quick Settings"
-    bl_parent_id = "SEANBLEND_PT_Settings"
-
-    def draw(self, context):
-        layout = self.layout
-        scene = context.scene
-        prop = scene.seanblend
-
         layout.operator("seanblend.disable")
         layout.operator("seanblend.remove")
 
-class SEANBLEND_PT_TextSaver(Panel, bpy.types.Panel):
-    bl_label = "Text Saver"
-    bl_idname = "SEANBLEND_PT_TextSaver"
+class SEANBLEND_PT_ObjectAdder(Panel, bpy.types.Panel):
+    bl_label = "Object Adder"
+    bl_idname = "SEANBLEND_PT_ObjectAdder"
 
     def draw(self, context):
         layout = self.layout
         scene = context.scene
         prop = scene.seanblend
-
-        row = layout.row()
 
 classess = (SeanBlendProperties,                # Extra s in classess to keep letter count multiple of 4
             SEANBLEND_OT_Disable,
             SEANBLEND_OT_Remove,
             SEANBLEND_PT_Settings,
-            SEANBLEND_PT_QuickSettings)
-
+            SEANBLEND_PT_ObjectAdder,
+            SEANBLEND_OT_Plane,
+            SEANBLEND_PT_Mesh)
 
 def register():
     from bpy.utils import register_class
