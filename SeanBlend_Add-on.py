@@ -167,7 +167,7 @@ class SEANBLEND_OT_Path(Operator):
     bl_idname = "seanblend.path"
 
     def execute(self, context):
-        bpy.ops.curve_primitive_nurbs_path_add()
+        bpy.ops.curve.primitive_nurbs_path_add()
         return {'FINISHED'}
 
 #Settings
