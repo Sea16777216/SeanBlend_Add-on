@@ -1,8 +1,12 @@
+#####################
+#bl_info and imports#
+#####################
+
 bl_info = {
     "name":          "SeanBlend",
     "description":   "All add-ons made by SeanBlend",
     "author":        "Sean Huang, Patrick Huang",
-    "version":       (1, 0, 2),
+    "version":       (1, 0, 3),
     "blender":       (2, 80, 0),
     "location":      "3D View >> Sidebar >> SeanBlend",
     "warning":       "",
@@ -23,30 +27,11 @@ from bpy.types import (Panel,
                        Operator,
                        PropertyGroup)
 
+###########
+#Operators#
+###########
 
-
-class SeanBlendProperties(PropertyGroup):
-    hi: BoolProperty(
-        name = "hi",
-        description = "hi"
-    )
-
-class Panel():
-    bl_space_type = "VIEW_3D"
-    bl_region_type = "UI"
-    bl_category = "SeanBlend"
-    bl_options = {'DEFAULT_CLOSED'}
-
-class SEANBLEND_PT_Mesh(Panel, bpy.types.Panel):
-    bl_label = "Mesh"
-    bl_parent_id = "SEANBLEND_PT_ObjectAdder"
-
-    def draw(self, context):
-        layout = self.layout
-        scene = context.scene
-        prop = scene.seanblend
-
-        layout.operator("seanblend.plane")
+#Object Adder >> Mesh
 
 class SEANBLEND_OT_Plane(Operator):
     bl_label = "Add Plane"
@@ -56,7 +41,109 @@ class SEANBLEND_OT_Plane(Operator):
     def execute(self, context):
         bpy.ops.mesh.primitive_plane_add()
         return {'FINISHED'}
-        
+
+class SEANBLEND_OT_Cube(Operator):
+    bl_label = "Add Cube"
+    bl_description = "Adds a cube"
+    bl_idname = "seanblend.cube"
+    
+    def execute(self, context):
+        bpy.ops.mesh.primitive_cube_add()
+        return {'FINISHED'}
+
+class SEANBLEND_OT_UVSphere(Operator):
+    bl_label = "Add UV Sphere"
+    bl_description = "Adds a UV Sphere"
+    bl_idname = "seanblend.uvsphere"
+    
+    def execute(self, context):
+        bpy.ops.mesh.primitive_uv_sphere_add()
+        return {'FINISHED'}
+
+class SEANBLEND_OT_IcoSphere(Operator):
+    bl_label = "Add Ico Sphere"
+    bl_description = "Adds a Ico Sphere"
+    bl_idname = "seanblend.icosphere"
+    
+    def execute(self, context):
+        bpy.ops.mesh.primitive_ico_sphere_add()
+        return {'FINISHED'}
+
+class SEANBLEND_OT_Circle(Operator):
+    bl_label = "Add Circle"
+    bl_description = "Adds a circle"
+    bl_idname = "seanblend.circle"
+    
+    def execute(self, context):
+        bpy.ops.mesh.primitive_circle_add()
+        return {'FINISHED'}
+
+class SEANBLEND_OT_Cylinder(Operator):
+    bl_label = "Add Cylinder"
+    bl_description = "Adds a cylinder"
+    bl_idname = "seanblend.cylinder"
+    
+    def execute(self, context):
+        bpy.ops.mesh.primitive_cylinder_add()
+        return {'FINISHED'}
+
+class SEANBLEND_OT_Cone(Operator):
+    bl_label = "Add Cone"
+    bl_description = "Adds a cone"
+    bl_idname = "seanblend.cone"
+    
+    def execute(self, context):
+        bpy.ops.mesh.primitive_cone_add()
+        return {'FINISHED'}
+
+class SEANBLEND_OT_Torus(Operator):
+    bl_label = "Add Torus"
+    bl_description = "Adds a torus"
+    bl_idname = "seanblend.torus"
+    
+    def execute(self, context):
+        bpy.ops.mesh.primitive_torus_add()
+        return {'FINISHED'}
+
+class SEANBLEND_OT_Grid(Operator):
+    bl_label = "Add Grid"
+    bl_description = "Adds a grid"
+    bl_idname = "seanblend.grid"
+    
+    def execute(self, context):
+        bpy.ops.mesh.primitive_grid_add()
+        return {'FINISHED'}
+
+class SEANBLEND_OT_MonkeySuzzane(Operator):
+    bl_label = "Add Monkey/Suzzane"
+    bl_description = "Adds a Monkey/Suzzane"
+    bl_idname = "seanblend.monkeysuzzane"
+    
+    def execute(self, context):
+        bpy.ops.mesh.primitive_monkey_add()
+        return {'FINISHED'}
+
+#Object Adder >> Curve
+
+class SEANBLEND_OT_Bezier(Operator):
+    bl_label = "Add Bezier"
+    bl_description = "Adds a Bezier"
+    bl_idname = "seanblend.bezier"
+
+    def execute(self, context):
+        bpy.ops.curve.primitive_bezier_curve_add()
+        return {'FINISHED'}
+
+class SEANBLEND_OT_CCircle(Operator):
+    bl_label = "Add Circle (Curve)"
+    bl_description = "Adds a Circle (Curve)"
+    bl_idname = "seanblend.ccircle"
+
+    def execute(self, context):
+        bpy.ops.curve.primitive_bezier_circle_add()
+        return {'FINISHED'}
+
+#Settings
 
 class SEANBLEND_OT_Disable(Operator):
     bl_label = "Disable"
@@ -76,6 +163,66 @@ class SEANBLEND_OT_Remove(Operator):
         bpy.ops.preferences.addon_remove(module = "SeanBlend_Add-on")
         return {'FINISHED'}
 
+########
+#Panels#
+########
+
+class SeanBlendProperties(PropertyGroup):
+    hi: BoolProperty(
+        name = "hi",
+        description = "hi"
+    )
+
+class Panel():
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_category = "SeanBlend"
+    bl_options = {'DEFAULT_CLOSED'}
+
+#Object Adder
+
+class SEANBLEND_PT_Mesh(Panel, bpy.types.Panel):
+    bl_label = "Mesh"
+    bl_parent_id = "SEANBLEND_PT_ObjectAdder"
+
+    def draw(self, context):
+        layout = self.layout
+        scene = context.scene
+        prop = scene.seanblend
+
+        layout.operator("seanblend.plane")
+        layout.operator("seanblend.cube")
+        layout.operator("seanblend.circle")
+        layout.operator("seanblend.uvsphere")
+        layout.operator("seanblend.icosphere")
+        layout.operator("seanblend.cylinder")
+        layout.operator("seanblend.cone")
+        layout.operator("seanblend.torus")
+        layout.operator("seanblend.grid")
+        layout.operator("seanblend.monkeysuzzane")
+
+class SEANBLEND_PT_ObjectAdder(Panel, bpy.types.Panel):
+    bl_label = "Object Adder"
+    bl_idname = "SEANBLEND_PT_ObjectAdder"
+
+    def draw(self, context):
+        layout = self.layout
+        scene = context.scene
+        prop = scene.seanblend
+
+class SEANBLEND_PT_Curve(Panel, bpy.types.Panel):
+    bl_label = "Curve"
+    bl_parent_id = "SEANBLEND_PT_ObjectAdder"
+
+    def draw(self, context):
+        layout = self.layout
+        scene = context.scene
+        prop = scene.seanblend
+
+        layout.operator("seanblend.bezier")
+        layout.operator("seanblend.ccircle")
+
+#Settings
 
 class SEANBLEND_PT_Settings(Panel, bpy.types.Panel):
     bl_label = "Settings"
@@ -89,22 +236,34 @@ class SEANBLEND_PT_Settings(Panel, bpy.types.Panel):
         layout.operator("seanblend.disable")
         layout.operator("seanblend.remove")
 
-class SEANBLEND_PT_ObjectAdder(Panel, bpy.types.Panel):
-    bl_label = "Object Adder"
-    bl_idname = "SEANBLEND_PT_ObjectAdder"
+#######
+#Other#
+#######
 
-    def draw(self, context):
-        layout = self.layout
-        scene = context.scene
-        prop = scene.seanblend
-
-classess = (SeanBlendProperties,                # Extra s in classess to keep letter count multiple of 4
-            SEANBLEND_OT_Disable,
-            SEANBLEND_OT_Remove,
+classess = (#Panels#
+            SeanBlendProperties,                # Extra s in classess to keep letter count multiple of 4
             SEANBLEND_PT_Settings,
             SEANBLEND_PT_ObjectAdder,
+            SEANBLEND_PT_Mesh,
+            SEANBLEND_PT_Curve,
+            #Operators#
+            #Settings
+            SEANBLEND_OT_Disable,
+            SEANBLEND_OT_Remove,
+            #Object Adder >> Mesh
             SEANBLEND_OT_Plane,
-            SEANBLEND_PT_Mesh)
+            SEANBLEND_OT_Cube,
+            SEANBLEND_OT_Circle,
+            SEANBLEND_OT_UVSphere,
+            SEANBLEND_OT_IcoSphere,
+            SEANBLEND_OT_Cylinder,
+            SEANBLEND_OT_Cone,
+            SEANBLEND_OT_Torus,
+            SEANBLEND_OT_Grid,
+            SEANBLEND_OT_MonkeySuzzane,
+            #Object Adder >> Curve
+            SEANBLEND_OT_Bezier,
+            SEANBLEND_OT_CCircle,)
 
 def register():
     from bpy.utils import register_class
