@@ -17,10 +17,6 @@ How to Install
     6. Press "Open"
 
 How to use:
-    1. Press "n" to go to the sidebar
-    2. On the right side, click SeanBlend
-
-If you like it, give us some credit!
-You can also contrubite to help SeanBlend!
-
-*I recommend right-clicking on Prefrences and left-clicking "Assign Shortcut", and press ctrl + alt + u, but you will have to remember the shortcut!
+    Object Adder:
+        1. Click on which ever object panel you want to add on.
+        2. Click on the button of the object you want to add.
