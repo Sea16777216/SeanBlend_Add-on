@@ -170,6 +170,62 @@ class SEANBLEND_OT_Path(Operator):
         bpy.ops.curve.primitive_nurbs_path_add()
         return {'FINISHED'}
 
+#Object Adder >> Surface
+
+class SEANBLEND_OT_NCSurface(Operator):
+    bl_label = "Add Nurbs Curve (Surface)"
+    bl_description = "Adds a Nurbs Curve (Surface)"
+    bl_idname = "seanblend.ncsurface"
+
+    def execute(self, context):
+        bpy.ops.surface.primitive_nurbs_surface_curve_add()
+        return {'FINISHED'}
+        
+class SEANBLEND_OT_NCCircle(Operator):
+    bl_label = "Add Nurbs Curve (Surface: Circle)"
+    bl_description = "Adds a Nurbs Curve (Surface: Circle)"
+    bl_idname = "seanblend.nccircle"
+
+    def execute(self, context):
+        bpy.ops.surface.primitive_nurbs_surface_circle_add()
+        return {'FINISHED'}
+
+class SEANBLEND_OT_NSurface(Operator):
+    bl_label = "Add Nurbs Surface"
+    bl_description = "Adds a Nurbs Surface"
+    bl_idname = "seanblend.nsurface"
+
+    def execute(self, context):
+        bpy.ops.surface.primitive_nurbs_surface_surface_add()
+        return {'FINISHED'}
+
+class SEANBLEND_OT_NCCylinder(Operator):
+    bl_label = "Add Nurbs Curve (Surface: Cylinder)"
+    bl_description = "Adds a Nurbs Curve (Surface: Cylinder)"
+    bl_idname = "seanblend.nccylinder"
+
+    def execute(self, context):
+        bpy.ops.surface.primitive_nurbs_surface_cylinder_add()
+        return {'FINISHED'}
+
+class SEANBLEND_OT_NCSphere(Operator):
+    bl_label = "Add Nurbs Curve (Surface: Sphere)"
+    bl_description = "Adds a Nurbs Curve (Surface: Sphere)"
+    bl_idname = "seanblend.ncsphere"
+
+    def execute(self, context):
+        bpy.ops.surface.primitive_nurbs_surface_sphere_add()
+        return {'FINISHED'}
+
+class SEANBLEND_OT_NCTorus(Operator):
+    bl_label = "Add Nurbs Curve (Surface: Torus)"
+    bl_description = "Adds a Nurbs Curve (Surface: Torus)"
+    bl_idname = "seanblend.nctorus"
+
+    def execute(self, context):
+        bpy.ops.surface.primitive_nurbs_surface_torus_add()
+        return {'FINISHED'}
+
 #Settings
 
 class SEANBLEND_OT_Disable(Operator):
@@ -252,6 +308,22 @@ class SEANBLEND_PT_Curve(Panel, bpy.types.Panel):
         layout.operator("seanblend.nurbscircle")
         layout.operator("seanblend.path")
 
+class SEANBLEND_PT_Surface(Panel, bpy.types.Panel):
+    bl_label = "Surface"
+    bl_parent_id = "SEANBLEND_PT_ObjectAdder"
+
+    def draw(self, context):
+        layout = self.layout
+        scene = context.scene
+        prop = scene.seanblend
+
+        layout.operator("seanblend.ncsurface")
+        layout.operator("seanblend.nccircle")
+        layout.operator("seanblend.nsurface")
+        layout.operator("seanblend.nccylinder")
+        layout.operator("seanblend.ncsphere")
+        layout.operator("seanblend.nctorus")
+
 #Settings
 
 class SEANBLEND_PT_Settings(Panel, bpy.types.Panel):
@@ -271,11 +343,14 @@ class SEANBLEND_PT_Settings(Panel, bpy.types.Panel):
 #######
 
 classess = (#Panels#
+            #Settings
             SeanBlendProperties,                # Extra s in classess to keep letter count multiple of 4
             SEANBLEND_PT_Settings,
+            #Object Adder
             SEANBLEND_PT_ObjectAdder,
             SEANBLEND_PT_Mesh,
             SEANBLEND_PT_Curve,
+            SEANBLEND_PT_Surface,
             #Operators#
             #Settings
             SEANBLEND_OT_Disable,
@@ -296,7 +371,14 @@ classess = (#Panels#
             SEANBLEND_OT_CCircle,
             SEANBLEND_OT_Nurbs,
             SEANBLEND_OT_NurbsCircle,
-            SEANBLEND_OT_Path,)
+            SEANBLEND_OT_Path,
+            #Object Adder >> Surface
+            SEANBLEND_OT_NCSurface,
+            SEANBLEND_OT_NCCircle,
+            SEANBLEND_OT_NSurface,
+            SEANBLEND_OT_NCCylinder,
+            SEANBLEND_OT_NCSphere,
+            SEANBLEND_OT_NCTorus,)
 
 def register():
     from bpy.utils import register_class
