@@ -31,6 +31,17 @@ from bpy.types import (Panel,
 #Operators#
 ###########
 
+#Notepad
+
+class SEANBLEND_OT_SaveText(Operator):
+    bl_label = "Save Text"
+    bl_description = "Saves the text filled above"
+    bl_idname = "seanblend.savetext"
+
+    def execute(self, context):
+        text = bpy.ops.text.new()
+        text.write(Text)
+
 #Settings
 
 class SEANBLEND_OT_Disable(Operator):
@@ -56,9 +67,9 @@ class SEANBLEND_OT_Remove(Operator):
 ########
 
 class SeanBlendProperties(PropertyGroup):
-    hi: BoolProperty(
-        name = "hi",
-        description = "hi"
+    Text: StringProperty(
+        name = "Text:",
+        description = "Fill in to print the text into a text datablock"
     )
 
 class Panel():
@@ -66,6 +77,20 @@ class Panel():
     bl_region_type = "UI"
     bl_category = "SeanBlend"
     bl_options = {'DEFAULT_CLOSED'}
+
+#Notepad
+
+class SEANBLEND_PT_Notepad(Panel, bpy.ops.Panel):
+    bl_label = "Notepad"
+    bl_idname = "SEANBLEND_PT_Notepad"
+
+    def draw(self, context):
+        layout = self.layout
+        scene = context.scene
+        prop = scene.seanblend
+
+        layout.prop(prop, Text)
+        layout.operator("seanblend.disable")
 
 #Settings
 
@@ -85,14 +110,18 @@ class SEANBLEND_PT_Settings(Panel, bpy.types.Panel):
 #Other#
 #######
 
-classess = (#Panels#
+classess = (#Panels#                                       # Extra s in classess to keep letter count multiple of 4
             #Settings
-            SeanBlendProperties,                # Extra s in classess to keep letter count multiple of 4
+            SeanBlendProperties,
             SEANBLEND_PT_Settings,
+            #Notepad
+            SEANBLEND_PT_Notepad,
             #Operators#
             #Settings
             SEANBLEND_OT_Disable,
-            SEANBLEND_OT_Remove,)
+            SEANBLEND_OT_Remove,
+            #Notepad
+            SEANBLEND_OT_SaveText,)
 
 def register():
     from bpy.utils import register_class
